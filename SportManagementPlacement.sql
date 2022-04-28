@@ -6,6 +6,8 @@ FROM Sheet1$
 SELECT Latitude, Longitude, Organization, Title, [Type of Organization]
 FROM Sheet1$
 WHERE Latitude IS NOT NULL
+AND Placement = 'Job'
+AND Major = 'Sport Management'
 
 --Change nulls to blanks - reads better in labeling
 
@@ -22,6 +24,7 @@ WHERE [Type of Organization] IS NULL
 SELECT Year, Major, Sports
 FROM Sheet1$
 WHERE Major = 'Sport Management'
+AND Placement = 'Job'
 AND Year > 2000
 AND Sports != 'All'
 AND Sports IS NOT NULL
@@ -63,3 +66,7 @@ FROM Sheet1$
 GROUP BY Year, [Type of Organization], Major
 HAVING Major = 'Sport Management'
 ORDER BY Year
+
+SELECT COUNT(*) AS Placements
+FROM Sheet1$
+WHERE Major = 'Sport Management'
